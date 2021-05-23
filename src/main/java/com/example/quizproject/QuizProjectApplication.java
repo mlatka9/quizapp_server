@@ -3,6 +3,9 @@ package com.example.quizproject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Start class of Spring Boot Application
+ */
 @SpringBootApplication
 public class QuizProjectApplication {
 

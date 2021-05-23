@@ -7,31 +7,27 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
+
 import org.springframework.core.io.Resource;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Configuration class used to insert data from csv file to database
+ * Configuration class used to insert data to database
  *
- * it opens a file questions.csv from resources directory, create QuizQuestion and insert them to database using
+ * it create QuizQuestion and insert them to database using
  * default method provided by JPA
  *
  */
 @Configuration
 public class QuizConfig {
 
-
     @Bean
-    CommandLineRunner commandLineRunner(QuizQuestionRepository quizQuestionRepository) {
+    CommandLineRunner commandLineRunner(QuizQuestionRepository quizQuestionRepository, @Value("classpath:questions.csv") Resource resource) {
         return args -> {
 
             List<QuizQuestion> list = new ArrayList<>();
-
             list.add(new QuizQuestion(
                     "Ile jest 2+2?", 3, List.of("2", "1", "0", "4"), "matematyka"));
             list.add(new QuizQuestion(
@@ -154,9 +150,7 @@ public class QuizConfig {
 
 
             ///////////////////////////////////////
-
             quizQuestionRepository.saveAll(list);
-
         };
     }
 }
