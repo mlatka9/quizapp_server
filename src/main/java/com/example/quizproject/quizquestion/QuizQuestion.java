@@ -13,6 +13,18 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Pogo class use to store information about Question.
+ *
+ * It contains id which is automatically assigned by sequence. Field Question contain a string value with question.
+ * Field correct answer is a number from 0 to 3, which point on which index in list contain correct answer. Field
+ * category tell from which category is that question. List answers contain strings with all possible to select answer
+ * on question. None of the fields cannot be blank, it is guaranteed be javax validation
+ *
+ * Class using a library Lombok to auto-generate all needed setters, getters and Constructor without arguments.
+ * Class using a JPA implemented by Hibernate as ORM to generate sql code and change java objects to inserts to database
+ *
+ */
 @NoArgsConstructor
 @Getter
 @Setter
